@@ -9,6 +9,7 @@ class spriteComponent(Component):
         self.sprite = pygame.image.load(sprite)
         self.rect = self.sprite.get_rect()
         self.screen = screen
+        self.original_size = (self.sprite.get_height(), self.sprite.get_height())
 
 
     def changeImage(self, sprite):

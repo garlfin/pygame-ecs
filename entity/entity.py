@@ -1,6 +1,7 @@
 from component.components import componentTypes, componentDict
 from system.components import componentDict as systemComponentDict
 
+
 class Entity:
     def __init__(self, system_handler):
         self.owner = None

@@ -13,14 +13,16 @@ if __name__ == "__main__":
     size = width, height = 1280, 720
     screen = pygame.display.set_mode(size, vsync=1)
 
-    white = hexToColor('FFFFFF')
+    fill_color = hexToColor('FFFFFF')
     pygame.display.set_caption("game lolz")
 
     system_handler = system.system_handler.systemHandler()
     system_handler.registerAllSystems()
     test_entity_1 = entity.entity.Entity(system_handler)
     test_entity_1.addComponent(componentTypes.transform)
-    test_entity_1.getComponent(componentTypes.transform).location = (1280/2, 720/2, 0)
+    test_entity_1.getComponent(componentTypes.transform).location = (1280 / 2, 720 / 2, 0)
+    test_entity_1.getComponent(componentTypes.transform).scale = (2, 3, 0)
+    test_entity_1.getComponent(componentTypes.transform).rotation = (1, 0, 0)
     test_entity_1.addComponent(componentTypes.sprite, ["test.jpg", screen])
 
     ticksLastFrame = 0
@@ -32,6 +34,6 @@ if __name__ == "__main__":
         ticks = pygame.time.get_ticks()
         dt = (ticks - ticksLastFrame) / 1000.0
         ticksLastFrame = ticks
-        screen.fill(white)
+        screen.fill(fill_color)
         system_handler.iterateAllSystems(dt)
         pygame.display.flip()
