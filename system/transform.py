@@ -5,5 +5,4 @@ class transformSystem(system.system.System):
     def main(self, deltaTime):
        for component in self.all_components:
             self.temp_sprite_item = component.owner.getComponent(componentTypes.sprite)
-            print(self.temp_sprite_item.screen.get_size())
             self.temp_sprite_item.rect.x, self.temp_sprite_item.rect.y = component.location[0] - self.temp_sprite_item.rect.size[0]/2, component.location[1] - self.temp_sprite_item.rect.size[1]/2

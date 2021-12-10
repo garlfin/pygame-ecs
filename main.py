@@ -22,7 +22,6 @@ if __name__ == "__main__":
     test_entity_1.addComponent(componentTypes.transform)
     test_entity_1.getComponent(componentTypes.transform).location = (1280/2, 720/2, 0)
     test_entity_1.addComponent(componentTypes.sprite, ["test.jpg", screen])
-    print(test_entity_1.getComponent(componentTypes.transform).getSystem())
 
     ticksLastFrame = 0
 
