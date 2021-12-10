@@ -5,6 +5,7 @@ class spriteComponent(Component):
     def __init__(self, owner, type, system_owner, sprite, screen, alpha=True):
         self.owner = owner
         self.type = type
+        self.image_path = sprite
         self.system_owner = system_owner
         self.sprite = pygame.image.load(sprite).convert_alpha() if alpha else pygame.image.load(sprite)
         self.rect = self.sprite.get_rect()

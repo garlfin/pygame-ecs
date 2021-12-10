@@ -27,7 +27,7 @@ if __name__ == "__main__":
     test_entity_1.getComponent(componentTypes.sprite).original_size = (269, 188)
 
     ticksLastFrame = 0
-
+    screen_size = (width, height)
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
@@ -37,6 +37,10 @@ if __name__ == "__main__":
                                                   pygame.RESIZABLE)
                 test_entity_1.getComponent(componentTypes.transform).location = (
                 screen.get_width() / 2, screen.get_height() / 2, 0)
+                if screen.get_width() > screen_size[0]:
+                    for item in system_handler.getSystem(componentTypes.sprite).all_components:
+                        item.changeImage(item.image_path, True)
+                screen_size = (screen.get_width(), screen.get_height())
         ticks = pygame.time.get_ticks()
         dt = (ticks - ticksLastFrame) / 1000.0
         ticksLastFrame = ticks

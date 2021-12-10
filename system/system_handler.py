@@ -12,9 +12,9 @@ class systemHandler:
         for system in systemComponentDict.items():
             self.createSystem(system[0])
 
-    def getSystem(self, type):
+    def getSystem(self, type_of):
         for system in self.all_systems:
-            if type(system) == component.components.componentDict.get(type):
+            if type(system) == systemComponentDict.get(type_of):
                 return system
 
     def iterateAllSystems(self, deltaTime):
