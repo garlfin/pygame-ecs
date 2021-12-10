@@ -11,7 +11,7 @@ def hexToColor(h):
 if __name__ == "__main__":
     pygame.init()
     size = width, height = 1280, 720
-    screen = pygame.display.set_mode(size, vsync=1)
+    screen = pygame.display.set_mode(size, pygame.RESIZABLE, vsync=1)
 
     fill_color = hexToColor('FFFFFF')
     pygame.display.set_caption("game lolz")
@@ -20,17 +20,23 @@ if __name__ == "__main__":
     system_handler.registerAllSystems()
     test_entity_1 = entity.entity.Entity(system_handler)
     test_entity_1.addComponent(componentTypes.transform)
-    test_entity_1.getComponent(componentTypes.transform).location = (1280 / 2, 720 / 2, 0)
-    test_entity_1.getComponent(componentTypes.transform).scale = (2, 3, 0)
+    test_entity_1.getComponent(componentTypes.transform).location = (screen.get_width() / 2, screen.get_height() / 2, 0)
+    test_entity_1.getComponent(componentTypes.transform).scale = (2, 2, 0)
     test_entity_1.getComponent(componentTypes.transform).rotation = (1, 0, 0)
-    test_entity_1.addComponent(componentTypes.sprite, ["test.jpg", screen])
+    test_entity_1.addComponent(componentTypes.sprite, ["resources/images/smiley.png", screen, True])
+    test_entity_1.getComponent(componentTypes.sprite).original_size = (269, 188)
 
     ticksLastFrame = 0
 
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
-
+            elif event.type == pygame.VIDEORESIZE:
+                # There's some code to add back window content here.
+                screen = pygame.display.set_mode((event.w, event.h),
+                                                  pygame.RESIZABLE)
+                test_entity_1.getComponent(componentTypes.transform).location = (
+                screen.get_width() / 2, screen.get_height() / 2, 0)
         ticks = pygame.time.get_ticks()
         dt = (ticks - ticksLastFrame) / 1000.0
         ticksLastFrame = ticks
