@@ -1,6 +1,7 @@
 from enum import Enum
 from component import transform, sprite, movement
 
+
 class componentTypes(Enum):
     transform = 1,
     physics = 2,

@@ -1,0 +1,40 @@
+{
+  "player": {
+    "type": "basic_entity",
+    "sprite": "resources/images/smiley.png",
+    "sprite_custom_size": [
+      269,
+      188
+    ],
+    "transform": {
+      "location": [
+        640,
+        360
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "components": [
+      {
+        "type": "movement",
+        "args": [100]
+      }
+    ]
+  },
+  "tree2": {
+    "type": "basic_entity",
+    "sprite": "resources/images/tree.png",
+    "transform": {
+      "location": [
+        100,
+        300
+      ],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    }
+  }
+}

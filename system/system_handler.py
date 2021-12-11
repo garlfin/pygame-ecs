@@ -1,6 +1,7 @@
 from system.components import componentDict as systemComponentDict
 import component.components
 
+
 class systemHandler:
     def __init__(self):
         self.all_systems = []
