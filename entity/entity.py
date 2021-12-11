@@ -10,10 +10,11 @@ class Entity:
         self.system_handler = system_handler
 
     def addComponent(self, type, args=[]):
-        self.tempargs = [self, type, self.getSystem(type)]
-        for arg in args:
-            self.tempargs.append(arg)
-        self.components.append(self.getSystem(type).addComponent(componentDict.get(type)(*self.tempargs)))
+        if not self.getComponent(type):
+            self.tempargs = [self, type, self.getSystem(type)]
+            for arg in args:
+                self.tempargs.append(arg)
+            self.components.append(self.getSystem(type).addComponent(componentDict.get(type)(*self.tempargs)))
 
     def getSystem(self, type_of):
         for system in self.system_handler.all_systems:

@@ -1,4 +1,4 @@
-import entity.entity
+import entity.basic_entity
 import system.system_handler
 from component.components import componentTypes
 import sys, pygame
@@ -14,22 +14,26 @@ if __name__ == "__main__":
     screen = pygame.display.set_mode(size, pygame.RESIZABLE)
 
     fill_color = hexToColor('FFFFFF')
-    pygame.display.set_caption("Garlfins PyGame")
+    pygame.display.set_caption("Garlfins Game")
     pygame.display.set_icon(pygame.image.load("resources/images/smiley.png"))
 
     system_handler = system.system_handler.systemHandler()
     system_handler.registerAllSystems()
-    test_entity_1 = entity.entity.Entity(system_handler)
-    test_entity_1.addComponent(componentTypes.transform)
+    test_entity_1 = entity.basic_entity.basicEntity(system_handler, screen)
     test_entity_1.getComponent(componentTypes.transform).location = [screen.get_width() / 2, screen.get_height() / 2, 0]
-    test_entity_1.getComponent(componentTypes.transform).scale = [1, 1, 0]
-    test_entity_1.getComponent(componentTypes.transform).rotation = (1, 0, 0)
-    test_entity_1.addComponent(componentTypes.sprite, ["resources/images/smiley.png", screen, True])
-    test_entity_1.getComponent(componentTypes.sprite).original_size = (269, 188)
+    test_entity_1.getComponent(componentTypes.transform).scale = [1, 1]
+    test_entity_1.getComponent(componentTypes.sprite).changeImage("resources/images/smiley.png")
+    test_entity_1.getComponent(componentTypes.sprite).setCustomSize((269, 188))
     test_entity_1.addComponent(componentTypes.movement, [100])
+
+    with entity.basic_entity.basicEntity(system_handler, screen) as tree_entity:
+        tree_entity.getComponent(componentTypes.transform).location = [100, 300]
+        tree_entity.getComponent(componentTypes.transform).scale = [0.5, 0.5]
+        tree_entity.getComponent(componentTypes.sprite).changeImage("resources/images/tree.png")
 
     ticksLastFrame = 0
     screen_size = (width, height)
+    window_resize = 1
     while True:
         events = pygame.event.get()
         for event in events:
@@ -38,11 +42,12 @@ if __name__ == "__main__":
                 # There's some code to add back window content here.
                 screen = pygame.display.set_mode((event.w, event.h),
                                                   pygame.RESIZABLE)
-                test_entity_1.getComponent(componentTypes.transform).location = [
-                screen.get_width() / 2, screen.get_height() / 2, 0]
+                # test_entity_1.getComponent(componentTypes.transform).location = [
+                # screen.get_width() / 2, screen.get_height() / 2]
                 for item in system_handler.getSystem(componentTypes.sprite).all_components:
-                    item.changeImage(item.image_path, True)
+                    item.changeImage(item.image_path)
                 screen_size = (screen.get_width(), screen.get_height())
+            window_resize = screen.get_size()[0] / 1280
         ticks = pygame.time.get_ticks()
         dt = (ticks - ticksLastFrame) / 1000.0
         ticksLastFrame = ticks

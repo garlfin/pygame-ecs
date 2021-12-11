@@ -24,4 +24,4 @@ class transformSystem(system.system.System):
             self.temp_sprite_item.rect.center = (
                 self.temp_sprite_item.sprite.get_width() / 2, self.temp_sprite_item.sprite.get_height() / 2)
             self.temp_sprite_item.rect.x, self.temp_sprite_item.rect.y = center(self.temp_sprite_item.sprite, [
-                component.location[0], component.location[1]])
+                component.location[0]*self.window_resize, component.location[1]*self.window_resize])
