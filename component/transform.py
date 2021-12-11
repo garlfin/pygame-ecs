@@ -8,3 +8,4 @@ class transformComponent(Component):
         self.scale = scale
         self.type = type
         self.system_owner = system_owner
+        self.direction = 1

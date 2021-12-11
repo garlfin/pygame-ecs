@@ -17,6 +17,6 @@ class systemHandler:
             if type(system) == systemComponentDict.get(type_of):
                 return system
 
-    def iterateAllSystems(self, deltaTime):
+    def iterateAllSystems(self, deltaTime, events):
         for system in self.all_systems:
-            system.main(deltaTime)
+            system.main(deltaTime, events)

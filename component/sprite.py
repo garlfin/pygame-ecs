@@ -9,6 +9,7 @@ class spriteComponent(Component):
         self.system_owner = system_owner
         self.sprite = pygame.image.load(sprite).convert_alpha() if alpha else pygame.image.load(sprite)
         self.rect = self.sprite.get_rect()
+        self.rect.center = (self.sprite.get_width()/2, self.sprite.get_height()/2)
         self.screen = screen
         self.original_size = (self.sprite.get_height(), self.sprite.get_height())
 
