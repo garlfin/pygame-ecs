@@ -1,4 +1,32 @@
 {
+  "tree2": {
+    "type": "basic_entity",
+    "sprite": "resources/images/tree.png",
+    "transform": {
+      "location": [
+        100,
+        300
+      ],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    }
+  },
+  "tree1": {
+    "type": "basic_entity",
+    "sprite": "resources/images/tree.png",
+    "transform": {
+      "location": [
+        1020,
+        560
+      ],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    }
+  },
   "player": {
     "type": "basic_entity",
     "sprite": "resources/images/smiley.png",
@@ -19,22 +47,15 @@
     "components": [
       {
         "type": "movement",
-        "args": [100]
+        "args": [
+          100
+        ]
       }
     ]
   },
-  "tree2": {
-    "type": "basic_entity",
-    "sprite": "resources/images/tree.png",
-    "transform": {
-      "location": [
-        100,
-        300
-      ],
-      "scale": [
-        0.5,
-        0.5
-      ]
-    }
+  "background": {
+    "type": "background",
+    "sprite": "resources/images/grass2.png",
+    "tile": 1
   }
 }

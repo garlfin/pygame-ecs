@@ -1,6 +1,7 @@
 import pygame
 import sys
 
+import entity.entity
 import system.system_handler
 from component.components import componentTypes
 from map_loader.map import mapLoader
@@ -21,7 +22,6 @@ if __name__ == "__main__":
 
     system_handler = system.system_handler.systemHandler()
     system_handler.registerAllSystems()
-
     test_map = mapLoader("map_loader/maps/map1.json", system_handler=system_handler, screen=screen)
 
     ticksLastFrame = 0

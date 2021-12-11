@@ -2,6 +2,7 @@ import json
 
 import entity.basic_entity
 from component.components import componentTypes
+import entity.entity
 
 jsonToMap = {
     'transform': componentTypes.transform,
@@ -35,3 +36,8 @@ class mapLoader:
                             for component in self.data[map_part].get('components'):
                                 iteration_entity.addComponent(jsonToMap.get(component.get("type")),
                                                               component.get('args'))
+                elif self.data[map_part]['type'] == "background":
+                    with entity.entity.Entity(system_handler) as iteration_entity:
+                        iteration_entity = entity.entity.Entity(system_handler)
+                        iteration_entity.addComponent(componentTypes.background,
+                                                      [self.data[map_part]['sprite'], screen, self.data[map_part]['tile']])

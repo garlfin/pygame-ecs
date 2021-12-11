@@ -27,3 +27,9 @@ class Entity:
             if type(component) == componentDict.get(type_of):
                 return component
         return None
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        return None

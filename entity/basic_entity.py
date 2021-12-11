@@ -12,9 +12,3 @@ class basicEntity(entity.entity.Entity):
         self.addComponent(componentTypes.transform)
         self.screen = screen
         self.addComponent(componentTypes.sprite, ["resources/images/placeholder.png", self.screen])
-
-    def __enter__(self):
-        return self
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        return None
