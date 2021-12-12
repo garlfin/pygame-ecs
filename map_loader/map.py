@@ -27,8 +27,8 @@ class mapLoader:
                         iteration_entity.getComponent(componentTypes.transform).scale = self.data[map_part][
                             'transform'].get('scale')
                         iteration_entity.getComponent(componentTypes.sprite).changeImage(
-                            self.data[map_part]['sprite'] if self.data[map_part][
-                                'sprite'] else "resources/images/placeholder.png")
+                            self.data[map_part]['sprite'] if self.data[map_part].get(
+                                'sprite') else "resources/images/placeholder.png")
                         if self.data[map_part].get('sprite_custom_size'):
                             iteration_entity.getComponent(componentTypes.sprite).setCustomSize(
                                 self.data[map_part]['sprite_custom_size'])
@@ -41,7 +41,7 @@ class mapLoader:
                     with entity.entity.Entity(system_handler) as iteration_entity:
                         iteration_entity = entity.entity.Entity(system_handler)
                         iteration_entity.addComponent(componentTypes.background,
-                                                      [self.data[map_part]['sprite'], screen,
+                                                      [self.data[map_part]['sprite'] if self.data[map_part].get("sprite") else "resources/images/placeholder.png", screen,
                                                        self.data[map_part]['tile']])
                         self.background_music = pygame.mixer.Sound(self.data[map_part]['background_music'])
                         self.background_music.set_volume(self.data[map_part]['background_music_volume']/100)
