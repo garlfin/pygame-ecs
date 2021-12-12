@@ -27,6 +27,20 @@
       ]
     }
   },
+  "rock": {
+    "type": "basic_entity",
+    "sprite": "resources/images/rock.png",
+    "transform": {
+      "location": [
+        1020,
+        200
+      ],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    }
+  },
   "player": {
     "type": "basic_entity",
     "sprite": "resources/images/smiley.png",
@@ -40,8 +54,8 @@
         360
       ],
       "scale": [
-        1,
-        1
+        0.75,
+        0.75
       ]
     },
     "components": [
@@ -56,6 +70,8 @@
   "background": {
     "type": "background",
     "sprite": "resources/images/grass2.png",
-    "tile": 1
+    "tile": 1,
+    "background_music": "resources/music/monkeyspinning.mp3",
+    "background_music_volume": 10
   }
 }

@@ -3,6 +3,7 @@ import json
 import entity.basic_entity
 from component.components import componentTypes
 import entity.entity
+import pygame.mixer
 
 jsonToMap = {
     'transform': componentTypes.transform,
@@ -40,4 +41,8 @@ class mapLoader:
                     with entity.entity.Entity(system_handler) as iteration_entity:
                         iteration_entity = entity.entity.Entity(system_handler)
                         iteration_entity.addComponent(componentTypes.background,
-                                                      [self.data[map_part]['sprite'], screen, self.data[map_part]['tile']])
+                                                      [self.data[map_part]['sprite'], screen,
+                                                       self.data[map_part]['tile']])
+                        self.background_music = pygame.mixer.Sound(self.data[map_part]['background_music'])
+                        self.background_music.set_volume(self.data[map_part]['background_music_volume']/100)
+                        self.background_music.play(-1)  # On Loop, Forever  >:)

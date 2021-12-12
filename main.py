@@ -2,6 +2,7 @@ import pygame
 import sys
 
 import entity.entity
+import entity.basic_entity
 import system.system_handler
 from component.components import componentTypes
 from map_loader.map import mapLoader
@@ -13,6 +14,7 @@ def hexToColor(h):
 
 if __name__ == "__main__":
     pygame.init()
+    pygame.mixer.init()
     size = width, height = 1280, 720
     screen = pygame.display.set_mode(size, pygame.RESIZABLE)
 
@@ -24,9 +26,15 @@ if __name__ == "__main__":
     system_handler.registerAllSystems()
     test_map = mapLoader("map_loader/maps/map1.json", system_handler=system_handler, screen=screen)
 
+    pygame.mouse.set_visible(False)
+    mouse_entity = entity.basic_entity.basicEntity(system_handler, screen)
+    mouse_entity.getComponent(componentTypes.sprite).changeImage("resources/images/cursor.png")
+    mouse_entity.addComponent(componentTypes.mouseFollow)
+
     ticksLastFrame = 0
     screen_size = (width, height)
     window_resize = 1
+
     while True:
         events = pygame.event.get()
         for event in events:
