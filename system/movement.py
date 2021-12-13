@@ -6,7 +6,7 @@ from component.components import componentTypes
 
 
 class movementSystem(system.system.System):
-    def main(self, deltaTime, events):
+    def main(self, deltaTime, events, systemHandler=None):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_a]:
             for component in self.all_components:

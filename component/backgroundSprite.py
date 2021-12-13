@@ -4,13 +4,12 @@ from component.componentClass import Component
 
 
 class backgroundComponent(Component):
-    def __init__(self, owner, type, system_owner, sprite, screen, tile=1):
+    def __init__(self, owner, type, system_owner, sprite, tile=1):
         self.owner = owner
         self.type = type
-        self.screen = screen
+        self.screen = pygame.display.get_surface()
         self.system_owner = system_owner
         self.tile = 1 / tile
-        #self.sprite = pygame.transform.scale(pygame.image.load(sprite), (self.tile, self.tile))
         self.sprite = pygame.image.load(sprite)
         self.sprite = pygame.transform.scale(self.sprite, (self.sprite.get_width()*self.tile,self.sprite.get_height()*self.tile))
         self.render_sprite = self.sprite

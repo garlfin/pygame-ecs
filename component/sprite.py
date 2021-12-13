@@ -3,7 +3,7 @@ import pygame
 
 
 class spriteComponent(Component):
-    def __init__(self, owner, type, system_owner, sprite, screen, alpha=True):
+    def __init__(self, owner, type, system_owner, sprite, alpha=True):
         self.owner = owner
         self.type = type
         self.image_path = sprite
@@ -11,9 +11,10 @@ class spriteComponent(Component):
         self.sprite = pygame.image.load(sprite).convert_alpha() if alpha else pygame.image.load(sprite)
         self.rect = self.sprite.get_rect()
         self.rect.center = (self.sprite.get_width() / 2, self.sprite.get_height() / 2)
-        self.screen = screen
+        self.screen = pygame.display.get_surface()
         self.original_size = (self.sprite.get_height(), self.sprite.get_height())
         self.custom_size = None
+        self.use_window_size = True
 
     def setCustomSize(self, custom_size):
         self.custom_size = custom_size

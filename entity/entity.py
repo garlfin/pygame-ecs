@@ -28,6 +28,11 @@ class Entity:
                 return component
         return None
 
+    def removeComponent(self, type_of):
+        for component in self.components:
+            if type(component) == componentDict.get(type_of):
+                self.components.remove(self.getSystem(type_of).removeComponent(component))
+
     def __enter__(self):
         return self
 

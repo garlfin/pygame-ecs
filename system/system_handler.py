@@ -20,4 +20,4 @@ class systemHandler:
 
     def iterateAllSystems(self, deltaTime, events):
         for system in self.all_systems:
-            system.main(deltaTime, events)
+            system.main(deltaTime, events, self)

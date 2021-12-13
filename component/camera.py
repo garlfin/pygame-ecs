@@ -1,11 +1,7 @@
-import pygame.image
-import pygame.transform
-
-import component.sprite
 from component.componentClass import Component
 
 
-class mouseComponent(Component):
+class cameraComponent(Component):
     def __init__(self, owner, type, system_owner):
         self.owner = owner
         self.type = type

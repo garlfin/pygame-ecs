@@ -1,5 +1,5 @@
 from enum import Enum
-from component import transform, sprite, movement, backgroundSprite, mouseFollower
+from component import transform, sprite, movement, backgroundSprite, mouseFollower, camera
 
 
 class componentTypes(Enum):
@@ -8,7 +8,8 @@ class componentTypes(Enum):
     sprite = 3,
     movement = 4,
     background = 5,
-    mouseFollow = 6
+    mouseFollow = 6,
+    camera = 7
 
 
 componentDict = {
@@ -16,5 +17,6 @@ componentDict = {
     componentTypes.sprite: sprite.spriteComponent,
     componentTypes.movement: movement.movementComponent,
     componentTypes.background: backgroundSprite.backgroundComponent,
-    componentTypes.mouseFollow: mouseFollower.mouseComponent
+    componentTypes.mouseFollow: mouseFollower.mouseComponent,
+    componentTypes.camera: camera.cameraComponent
 }
